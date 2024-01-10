@@ -12,7 +12,14 @@ public class ChatMessage {
     @Id
     private String id;
     private String chatRoomId;
-    private String senderId;
+    private Long senderId;
     private Date sendTime;
     private String content;
+
+    public ChatMessage(String chatRoomId, Long senderId, String content) {
+        this.chatRoomId = chatRoomId;
+        this.senderId = senderId;
+        this.content = content;
+        this.sendTime = new Date();
+    }
 }

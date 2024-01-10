@@ -8,4 +8,9 @@ import java.util.Date;
 public class JoinedChatRoom {
     private String chatRoomId;
     private Date lastAccessTime;
+
+    public JoinedChatRoom(String chatRoomId, Date lastAccessTime) {
+        this.chatRoomId = chatRoomId;
+        this.lastAccessTime = lastAccessTime;
+    }
 }
