@@ -1,5 +1,6 @@
 package com.example.chatapp.service;
 
+import com.example.chatapp.domain.ChatMember;
 import com.example.chatapp.domain.ChatMessage;
 import com.example.chatapp.domain.ChatRoom;
 import com.example.chatapp.domain.subDoc.JoinedChatRoom;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ChatRoomService {
+public class ChatRoomSearchService {
     private final ChatMemberRepository chatMemberRepository;
     private final ChatRoomRepository chatRoomRepository;
 
@@ -32,6 +33,7 @@ public class ChatRoomService {
         ChatRoomByMemberDto chatRoomByMemberDto = new ChatRoomByMemberDto();
         ChatRoom chatRoom = chatRoomRepository.findById(joinedChatRoom.getChatRoomId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 채팅방입니다."));
+
 
         chatRoomByMemberDto.setTitle(chatRoom.getTitle());
         chatRoomByMemberDto.setLastMessages(chatRoom.getLastMessages());
