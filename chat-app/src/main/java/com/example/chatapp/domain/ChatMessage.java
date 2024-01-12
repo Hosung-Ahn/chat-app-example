@@ -2,6 +2,7 @@ package com.example.chatapp.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
 public class ChatMessage {
     @Id
     private String id;
+    @Indexed
     private String chatRoomId;
     private Long senderId;
     private Date sendTime;
