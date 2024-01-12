@@ -21,8 +21,7 @@ public class ChatRoom {
 
 
 
-    public ChatRoom(String title, List<Long> joinedMemberIds) {
+    public ChatRoom(String title) {
         this.title = title;
-        this.joinedMemberIds = joinedMemberIds;
     }
 }

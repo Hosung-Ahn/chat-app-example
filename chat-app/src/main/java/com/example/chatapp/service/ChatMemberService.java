@@ -25,9 +25,21 @@ public class ChatMemberService {
     }
 
     public void joinChatRoom(Long memberId, String chatRoomId) {
+        addChatRoomIdToMember(memberId, chatRoomId);
+        addMemberIdToChatRoom(memberId, chatRoomId);
+    }
+
+    private void addChatRoomIdToMember(Long memberId, String chatRoomId) {
         Query query = new Query(Criteria.where("_id").is(memberId)
                 .and("joinedChatRooms.chatRoomId").ne(chatRoomId));
         Update update = new Update().addToSet("joinedChatRooms", new JoinedChatRoom(chatRoomId, new Date()));
+        mongoTemplate.updateFirst(query, update, ChatMember.class);
+    }
+
+    private void addMemberIdToChatRoom(Long memberId, String chatRoomId) {
+        Query query = new Query(Criteria.where("_id").is(chatRoomId)
+                .and("joinedMemberIds").ne(memberId));
+        Update update = new Update().addToSet("joinedMemberIds", memberId);
         mongoTemplate.updateFirst(query, update, ChatMember.class);
     }
 
